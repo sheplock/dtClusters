@@ -14,17 +14,17 @@ using namespace std;
 // #define MERGE_DR
 const double MERGE_CLUSTER_DR = 0.6;
 
-struct cscCluster
+struct dtCluster
 {
   float x, y, z, t, tTotal, tWeighted, eta, phi;//t is t_strip, tWire, tTotal is sum
-  int nCscSegments;
+  int nDtSegments;
   float jetVeto, calojetVeto, muonVeto;
   int maxChamber, maxChamberSegment, nChamber;
-  // vector<int> cscChambers;
+  // vector<int> DtChambers;
   int maxStation, maxStationSegment, nStation, nStation5, nStation10, nStation10perc;
   float avgStation, avgStation5, avgStation10, avgStation10perc;
-  int nCscSegmentChamberPlus11, nCscSegmentChamberPlus12, nCscSegmentChamberPlus13, nCscSegmentChamberPlus21, nCscSegmentChamberPlus22, nCscSegmentChamberPlus31, nCscSegmentChamberPlus32, nCscSegmentChamberPlus41, nCscSegmentChamberPlus42;
-  int nCscSegmentChamberMinus11, nCscSegmentChamberMinus12, nCscSegmentChamberMinus13, nCscSegmentChamberMinus21, nCscSegmentChamberMinus22, nCscSegmentChamberMinus31, nCscSegmentChamberMinus32, nCscSegmentChamberMinus41, nCscSegmentChamberMinus42;
+  int nDtSegmentChamberPlus11, nDtSegmentChamberPlus12, nDtSegmentChamberPlus13, nDtSegmentChamberPlus21, nDtSegmentChamberPlus22, nDtSegmentChamberPlus31, nDtSegmentChamberPlus32, nDtSegmentChamberPlus41, nDtSegmentChamberPlus42;
+  int nDtSegmentChamberMinus11, nDtSegmentChamberMinus12, nDtSegmentChamberMinus13, nDtSegmentChamberMinus21, nDtSegmentChamberMinus22, nDtSegmentChamberMinus31, nDtSegmentChamberMinus32, nDtSegmentChamberMinus41, nDtSegmentChamberMinus42;
 
   int nLayersChamberPlus11, nLayersChamberPlus12, nLayersChamberPlus13, nLayersChamberPlus21, nLayersChamberPlus22, nLayersChamberPlus31, nLayersChamberPlus32, nLayersChamberPlus41, nLayersChamberPlus42;
   int nLayersChamberMinus11, nLayersChamberMinus12, nLayersChamberMinus13, nLayersChamberMinus21, nLayersChamberMinus22, nLayersChamberMinus31, nLayersChamberMinus32, nLayersChamberMinus41, nLayersChamberMinus42;
@@ -38,11 +38,6 @@ struct cscCluster
 
   vector<int>segment_id;
 };
-
-// struct largest_nCsc_cluster_
-// {
-//   inline bool operator() (const cscCluster& c1, const cscCluster& c2){return c1.nCscSegments > c2.nCscSegments;}
-// } largest_nCsc_cluster;
 
 typedef struct Point_
 {
@@ -64,7 +59,7 @@ public:
     ~DBSCAN(){}
     int nClusters;
     vector<int>clusterSize;
-    vector<int>cscLabels;
+    vector<int>dtLabels;
     vector<float>clusterEta;
     vector<float>clusterPhi;
     vector<float>clusterX;
@@ -92,7 +87,7 @@ public:
 
 
 
-    vector<cscCluster> CscCluster;
+    vector<dtCluster> DtCluster;
 
     int run();
     double deltaPhi(double phi1, double phi2);
